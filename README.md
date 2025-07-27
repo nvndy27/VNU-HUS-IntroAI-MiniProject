@@ -1,7 +1,7 @@
 > **Remark:** This repository is created for the "Introduction to Artificial Intelligence" course at VNU-HUS which I have participated in as a Lecturer. It serves as a template for students to submit their mini-project reports and presentations. The content is provided in both English and Vietnamese.
 >
-> > **Ghi chú:** Kho lưu trữ này được xây dựng để phục vụ cho môn "Nhập môn Trí tuệ Nhân tạo" tại VNU-HUS mà tôi tham gia với vai trò Giảng viên. Đây là một mẫu để sinh viên nộp báo cáo và slide trình bày bài tập nhóm. Nội dung được cung cấp bằng cả tiếng Anh và tiếng Việt.
-
+> **Ghi chú:** Kho lưu trữ này được xây dựng để phục vụ cho môn "Nhập môn Trí tuệ Nhân tạo" tại VNU-HUS mà tôi tham gia với vai trò Giảng viên. Đây là một mẫu để sinh viên nộp báo cáo và slide trình bày bài tập nhóm. Nội dung được cung cấp bằng cả tiếng Anh và tiếng Việt.
+>
 > **Instructions:** Fill in the details below in *one* language (English or Vietnamese), then **delete the other version** before submission. Please also **delete this remark and instruction section**.
 >
 > **Hướng dẫn:** Điền thông tin dự án bên dưới bằng *một* ngôn ngữ (Tiếng Anh hoặc Tiếng Việt), sau đó **xóa phiên bản còn lại** trước khi nộp. Đồng thời hãy **xóa phần ghi chú và hướng dẫn này**.
