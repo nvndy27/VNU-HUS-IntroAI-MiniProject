@@ -37,32 +37,32 @@
 > **Note:** This is a general template. Please adjust based on your specific project requirements.
 
 ### Chapter 1: Introduction
-1. **📝 Executive Summary**
+**📝 Executive Summary**
    - Brief overview of the project, main objectives, and key results
 
-2. **❓ Problem Statement**
+**❓ Problem Statement**
    - Description of the problem addressed and its relevance
 
 ### Chapter 2: Methodology & Implementation
-3. **⚙️ Methodology**
+**⚙️ Methodology**
    - Summary of the approach, algorithms, and data used
 
-4. **💻 Implementation**
+**💻 Implementation**
    - Description of the system, tools, and code structure
 
 ### Chapter 3: Results & Analysis
-5. **📊 Results & Discussion**
+**📊 Results & Discussion**
    - Main findings, performance metrics, and analysis
 
 ### Chapter 4: Conclusion
-6. **✅ Conclusion & Future Work**
+**✅ Conclusion & Future Work**
    - Summary of contributions and suggestions for improvement
 
 ### References & Appendices
-7. **📚 References**
+**📚 References**
    - List of cited papers, books, and resources
 
-8. **📎 Appendices** *(Optional)*
+**📎 Appendices** *(Optional)*
    - Additional results, code snippets, or user manual
 
 ---
@@ -138,32 +138,32 @@ See [Rubrics.md](Rubrics.md) for details on the mini-project evaluation criteria
 > **Lưu ý:** Đây là mẫu chung. Hãy điều chỉnh theo yêu cầu dự án.
 
 ### Chương 1: Giới thiệu
-1. **📝 Tóm tắt dự án**
+**📝 Tóm tắt dự án**
    - Tổng quan ngắn gọn về dự án, mục tiêu chính và kết quả nổi bật
 
-2. **❓ Bài toán đặt ra**
+**❓ Bài toán đặt ra**
    - Mô tả vấn đề giải quyết và ý nghĩa thực tiễn
 
 ### Chương 2: Phương pháp & Triển khai
-3. **⚙️ Phương pháp**
+**⚙️ Phương pháp**
    - Tóm tắt cách tiếp cận, thuật toán và dữ liệu sử dụng
 
-4. **💻 Triển khai**
+**💻 Triển khai**
    - Mô tả hệ thống, công cụ và cấu trúc mã nguồn
 
 ### Chương 3: Kết quả & Phân tích
-5. **📊 Kết quả & Thảo luận**
+**📊 Kết quả & Thảo luận**
    - Các phát hiện chính, chỉ số đánh giá và phân tích
 
 ### Chương 4: Kết luận
-6. **✅ Kết luận & Hướng phát triển**
+**✅ Kết luận & Hướng phát triển**
    - Tổng kết đóng góp và đề xuất cải tiến
 
 ### Tài liệu tham khảo & Phụ lục
-7. **📚 Tài liệu tham khảo**
+**📚 Tài liệu tham khảo**
    - Danh sách bài báo, sách và nguồn tham khảo
 
-8. **📎 Phụ lục** *(Tùy chọn)*
+**📎 Phụ lục** *(Tùy chọn)*
    - Kết quả bổ sung, đoạn mã hoặc hướng dẫn sử dụng
 
 ---
