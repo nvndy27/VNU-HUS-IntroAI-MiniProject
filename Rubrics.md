@@ -1,3 +1,7 @@
+[🇬🇧 English](#mini-project-rubric) | [🇻🇳 Vietnamese](#tiêu-chí-đánh-giá-bài-tập-nhóm)
+
+---
+
 ## Mini-Project Rubric
 
 *Report evaluation points: 60. Presentation points: 40. Total: 100*

@@ -6,6 +6,8 @@
 >
 > **Hướng dẫn:** Điền thông tin dự án bên dưới bằng *một* ngôn ngữ (Tiếng Anh hoặc Tiếng Việt), sau đó **xóa phiên bản còn lại** trước khi nộp. Đồng thời hãy **xóa phần ghi chú và hướng dẫn này**.
 
+[🇬🇧 English](#-introduction-to-ai-mini-project-report) | [🇻🇳 Vietnamese](#-báo-cáo-bài-tập-nhóm-môn-trí-tuệ-nhân-tạo)
+
 ---
 
 # 🤖 Introduction to AI Mini-Project Report
