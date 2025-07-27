@@ -45,7 +45,7 @@
 
 ### Chapter 2: Methodology & Implementation
 **⚙️ Methodology**
-   - Summary of the approach, algorithms, and data used
+   - Description of the approach, theoretical foundation, algorithms, and data used
 
 **💻 Implementation**
    - Description of the system, tools, and code structure
@@ -146,7 +146,7 @@ See [Rubrics.md](Rubrics.md) for details on the mini-project evaluation criteria
 
 ### Chương 2: Phương pháp & Triển khai
 **⚙️ Phương pháp**
-   - Tóm tắt cách tiếp cận, thuật toán và dữ liệu sử dụng
+   - Mô tả cách tiếp cận, cơ sở lý thuyết, thuật toán và dữ liệu sử dụng
 
 **💻 Triển khai**
    - Mô tả hệ thống, công cụ và cấu trúc mã nguồn
