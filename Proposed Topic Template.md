@@ -25,7 +25,7 @@ Title of your project goes here.
 |------------------|---------------------|-----------------------|
 | [Your Name 1]    | [Your Student ID 1] | [Your GitHub Username 1] |
 | [Your Name 2]    | [Your Student ID 2] | [Your GitHub Username 2] |
-| [Your Name 3]    | [Your Student ID 3] | [Your GitHub Username 3] |
+| [Your N ame 3]    | [Your Student ID 3] | [Your GitHub Username 3] |
 
 ### 🗒️ Summary
 Briefly describe your project (approx. 200–300 characters).
