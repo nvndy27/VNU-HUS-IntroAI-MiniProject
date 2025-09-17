@@ -57,7 +57,7 @@ Tên dự án của bạn.
 | [Đoàn Thị Minh Khuê]       | [23001894]    | [Tên GitHub 3]      |
 
 ### 🗒️ Tóm tắt
-Mô tả ngắn gọn về dự án của bạn (khoảng 200–300 ký tự).
+Mô tả ngắn gọn về dự án của bạn (khoảng 200–300 ký tự). Dự án ....
 
 ### 🎯 Bối cảnh
 Dự án của bạn sẽ giải quyết vấn đề gì? Động lực nào khiến bạn chọn chủ đề này? Tại sao chủ đề này quan trọng hoặc thú vị?
