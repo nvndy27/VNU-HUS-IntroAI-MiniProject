@@ -60,7 +60,9 @@ Tên dự án của bạn.
 Dự án tập trung vào bài toán phân loại rác thải dựa trên hình ảnh. Hệ thống có khả năng nhận dạng và phân loại rác thải thành các nhóm khác nhau, ví dụ nhựa, giấy, kim loại,... Đây là một ví dụ của việc bước đầu ứng dụng trí tuệ nhân tạo vào thực tế.
 
 ### 🎯 Bối cảnh
-Dự án của bạn sẽ giải quyết vấn đề gì? Động lực nào khiến bạn chọn chủ đề này? Tại sao chủ đề này quan trọng hoặc thú vị?
+- Dự án này tập trung giải quyết vấn đề phân loại rác thải, vốn hiện nay được thực hiện chủ yếu bằng hình thức thủ công, tốn thời gian và kém hiệu quả, gây khó khăn trong việc quản lý môi trường.
+- Chủ đề này được lựa chọn do số lượng rác thải ngày càng gia tăng, cũng như nhận thức về phân loại rác thải còn hạn chế. Đây là vấn đề vô cùng cấp bách và cần được quan tâm.
+- Chủ đề này quan trọng và thú vị vì nó không chỉ giúp chúng ta ứng dụng trí tuệ nhân tạo vào vấn đề thực tế, mà còn đóng góp thiết thực cho cộng đồng và góp phần bảo vệ môi trường.
 
 ### 🚀 Kế hoạch
 Bạn dự định thực hiện dự án như thế nào? Các bước chính sẽ thực hiện là gì? (ví dụ: thu thập dữ liệu, xây dựng mô hình, đánh giá, demo)
