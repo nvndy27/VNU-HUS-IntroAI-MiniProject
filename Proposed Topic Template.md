@@ -44,10 +44,10 @@ List any references, papers, libraries, or datasets you used when deciding the t
 ## 🇻🇳 Phiên bản Tiếng Việt
 
 ### 🏷️ Tên nhóm
-Tên nhóm của bạn.
+Nhóm 18.
 
 ### 📝 Tên dự án
-Tên dự án của bạn.
+Phân loại rác thải trong gia đình.
 
 ### 👥 Thành viên nhóm
 | 👤 Họ và tên 🧑‍🎓  | 🆔 Mã sinh viên 🧾 | 🐙 Tên GitHub 🔗     |
@@ -57,15 +57,17 @@ Tên dự án của bạn.
 | [Đoàn Thị Minh Khuê]       | [23001894]    | [doanminhkhue]      |
 
 ### 🗒️ Tóm tắt
-Dự án tập trung vào bài toán phân loại rác thải dựa trên hình ảnh. Hệ thống có khả năng nhận dạng và phân loại rác thải thành các nhóm khác nhau, ví dụ nhựa, giấy, kim loại,... Đây là một ví dụ của việc bước đầu ứng dụng trí tuệ nhân tạo vào thực tế.
+Dự án tập trung vào bài toán phân loại rác thải sinh hoạt trong gia đình dựa trên hình ảnh. Hệ thống có khả năng nhận dạng và phân loại rác thải thành các nhóm khác nhau, ví dụ nhựa, giấy, kim loại,... Đây là một ví dụ của việc bước đầu ứng dụng trí tuệ nhân tạo vào đời sống thực tế hằng ngày.
 
 ### 🎯 Bối cảnh
-- Dự án này tập trung giải quyết vấn đề phân loại rác thải, vốn hiện nay được thực hiện chủ yếu bằng hình thức thủ công, tốn thời gian và kém hiệu quả, gây khó khăn trong việc quản lý môi trường.
-- Chủ đề này được lựa chọn do số lượng rác thải ngày càng gia tăng, cũng như nhận thức về phân loại rác thải còn hạn chế. Đây là vấn đề vô cùng cấp bách và cần được quan tâm.
-- Chủ đề này quan trọng và thú vị vì nó không chỉ giúp chúng ta ứng dụng trí tuệ nhân tạo vào vấn đề thực tế, mà còn đóng góp thiết thực cho cộng đồng và góp phần bảo vệ môi trường.
+- Dự án này tập trung giải quyết vấn đề phân loại rác thải sinh hoạt trong gia đình, vốn hiện nay được thực hiện chủ yếu bằng hình thức thủ công, tốn thời gian và kém hiệu quả.
+- Chủ đề này được lựa chọn do số lượng rác thải ngày càng gia tăng, cũng như ý thức về phân loại rác thải còn hạn chế. Đây là vấn đề vô cùng cấp bách và cần được quan tâm.
+- Chủ đề này quan trọng và thú vị vì nó không chỉ giúp chúng ta ứng dụng trí tuệ nhân tạo vào vấn đề thực tế, mà còn đóng góp thiết thực cho cộng đồng và góp phần bảo vệ môi trường sống.
 
 ### 🚀 Kế hoạch
 Bạn dự định thực hiện dự án như thế nào? Các bước chính sẽ thực hiện là gì? (ví dụ: thu thập dữ liệu, xây dựng mô hình, đánh giá, demo)
 
 ### 📚 Tài liệu tham khảo
-Liệt kê các tài liệu tham khảo, bài báo, thư viện hoặc tập dữ liệu bạn đã sử dụng khi quyết định chủ đề dự án.
+- “Garbage Classification Dataset”, Kaggle, [https://www.kaggle.com/datasets/asdasdasasdas/garbage-classification]
+- Kharittha Jangsamsi.(2023),"Conventional Machine Learning Approach for Waste Classification", [https://dl.acm.org/doi/10.1145/3639592.3639594]
+- “Thực trạng phân loại rác thải sinh hoạt tại nguồn và tái chế rác thải tại Việt Nam”, Môi Trường Á Châu, [https://moitruongachau.com/vn/thuc-trang-phan-loai-rac-thai-sinh-hoat-tai-nguon-va-tai-che-rac-thai-tai-viet-nam.html]
