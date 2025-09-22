@@ -54,10 +54,10 @@ Tên dự án của bạn.
 |------------------|---------------------|---------------------|
 | [Nguyễn Văn Duy]           | [23001854]    | [nvndy27]      |
 | [Vũ Nguyễn Quỳnh Anh]      | [23001830]    | [quynhanh_2610]      |
-| [Đoàn Thị Minh Khuê]       | [23001894]    | [Tên GitHub 3]      |
+| [Đoàn Thị Minh Khuê]       | [23001894]    | [doanminhkhue]      |
 
 ### 🗒️ Tóm tắt
-Mô tả ngắn gọn về dự án của bạn (khoảng 200–300 ký tự). Dự án ....
+Dự án tập trung vào bài toán phân loại rác thải dựa trên hình ảnh. Hệ thống có khả năng nhận dạng và phân loại rác thải thành các nhóm khác nhau, ví dụ nhựa, giấy, kim loại,... Đây là một ví dụ của việc bước đầu ứng dụng trí tuệ nhân tạo vào thực tế.
 
 ### 🎯 Bối cảnh
 Dự án của bạn sẽ giải quyết vấn đề gì? Động lực nào khiến bạn chọn chủ đề này? Tại sao chủ đề này quan trọng hoặc thú vị?
