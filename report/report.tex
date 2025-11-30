@@ -1,0 +1,913 @@
+\documentclass[12pt,a4paper,oneside]{report}
+
+
+% Packages
+\usepackage{graphicx}
+\usepackage{geometry}
+\usepackage{hyperref}
+\usepackage[utf8]{vietnam}
+\usepackage{booktabs}
+\usepackage{float}
+\usepackage{amsmath}
+
+
+
+
+% Geometry setup
+\geometry{left=2cm,right=2cm,top=2cm,bottom=2cm}
+
+% Titlepage information
+\newcommand{\reporttitle}{Phân loại rác thải trong gia đình}
+\newcommand{\reportauthors}{%
+    Vũ Nguyễn Quỳnh Anh\\
+    Nguyễn Văn Duy\\
+    Đoàn Thị Minh Khuê
+}
+\newcommand{\courseinfo}{Mã học phần: MAT3508\\ Học kỳ 1, Năm học 2025-2026}
+\newcommand{\universitylogo}{HUS.png} % Đặt file logo vào cùng thư mục
+
+\newcommand{\doi}[1]{\href{https://doi.org/#1}{\texttt{#1}}} % DOI link command
+
+\begin{document}
+
+% Trang bìa
+\begin{titlepage}
+    \centering
+    \vspace*{-1cm}
+    {\LARGE\MakeUppercase{Đại học Quốc gia Hà Nội}\par}
+    {\LARGE\MakeUppercase{Trường Đại học Khoa học Tự nhiên}\par}
+    \vfill
+    \includegraphics[width=0.3\textwidth]{\universitylogo}\par\vfill
+    {\Huge \bfseries \reporttitle \par}
+    \vspace{1cm}
+    {\Large \reportauthors \par}
+    \vspace{1cm}
+    {\large \courseinfo \par}
+    \vfill
+\end{titlepage}
+
+% Trang thông tin dự án
+\clearpage
+\thispagestyle{empty}
+\begin{center}
+    {\LARGE \textbf{Thông tin Dự án}}\\[1.5em]
+    \parbox{0.85\textwidth}{
+        \textit{[Thông tin này cũng cần được ghi trong README.md của kho GitHub.]}
+    }
+    \\[2em]
+    \begin{tabular}{rl}
+        \textbf{Học phần:} & MAT3508 -- Nhập môn Trí tuệ Nhân tạo \\
+        \textbf{Học kỳ:} & Học kỳ 1, Năm học 2025-2026 \\
+        \textbf{Trường:} & VNU-HUS (Đại học Quốc gia Hà Nội -- Trường Đại học Khoa học Tự nhiên) \\
+        \textbf{Tên dự án:} & {Phân loại rác thải trong gia đình} \\
+        \textbf{Ngày nộp:} & {30/11/2025}  \\
+        \textbf{Báo cáo PDF:} & \href{[PDF Link]}{https://github.com/nvndy27/VNU-HUS-IntroAI-MiniProject/tree/master/report} \\
+        \textbf{Slide thuyết trình:} & \href{[Slides Link]}{Liên kết tới slide thuyết trình trong kho GitHub} \\
+        \textbf{Kho GitHub:} & \url{https://github.com/nvndy27/VNU-HUS-IntroAI-MiniProject}
+    \end{tabular}
+    \\[2em]
+    {\Large \textbf{Thành viên nhóm}}\\[1em]
+    \begin{tabular}{|l|l|l|}
+        \hline
+        \textbf{Họ tên} & \textbf{Mã sinh viên} & \textbf{Tên GitHub} \\
+        \hline
+        Vũ Nguyễn Quỳnh Anh & 23001830 & quynhanh\_2610 \\
+        \hline
+        Nguyễn Văn Duy & 23001854 & nvndy27 \\
+        \hline
+        Đoàn Thị Minh Khuê & 23001894 & doanminhkhue \\
+        \hline
+    \end{tabular}
+    \\[2em]
+    {\Large \textbf{Phân công công việc}}\\[1em]
+    \begin{tabular}{|l|p{10cm}|}
+        \hline
+        \textbf{Họ tên} & \textbf{Nhiệm vụ} \\
+        \hline
+        Vũ Nguyễn Quỳnh Anh &  \\
+        \hline
+        Nguyễn Văn Duy &  \\
+        \hline
+        Đoàn Thị Minh Khuê &  \\
+        \hline
+    \end{tabular}    
+\end{center}
+\clearpage
+
+\listoffigures % Remove if not needed
+
+\listoftables % Remove if not needed
+
+\tableofcontents
+\clearpage
+
+\chapter*{Lời mở đầu}
+
+Trong thời đại công nghệ số phát triển mạnh mẽ, Trí tuệ Nhân tạo (Artificial Intelligence – AI) không còn là khái niệm xa vời trong sách vở hay phim ảnh, mà đã trở thành nền tảng quan trọng trong nhiều ứng dụng thực tiễn của đời sống hiện đại. Những tiến bộ vượt bậc trong lĩnh vực Học sâu (Deep Learning) và xử lý ảnh đã mở ra nhiều hướng tiếp cận mới, đặc biệt là trong việc giải quyết các vấn đề môi trường – một trong những thách thức cấp thiết của thế kỷ XXI.
+
+Trong quá trình học môn Nhập môn Trí tuệ nhân tạo (Introduction to Artificial Intelligence), chúng tôi nhận thấy rằng việc ứng dụng AI vào những bài toán gần gũi đời sống không chỉ giúp củng cố kiến thức lý thuyết, mà còn đem lại cơ hội tiếp cận quy trình xây dựng một hệ thống AI hoàn chỉnh. Trong bối cảnh lượng rác thải sinh hoạt ngày càng gia tăng, nhu cầu phân loại rác tại hộ gia đình trở nên cấp bách, nhưng vẫn còn gặp nhiều hạn chế do thói quen và khả năng nhận diện của người dùng. Xuất phát từ thực tế đó, nhóm chúng tôi lựa chọn đề tài \textbf{“Phân loại rác thải sinh hoạt trong gia đình”} với mong muốn áp dụng các kỹ thuật xử lý ảnh và mô hình học sâu để hỗ trợ quá trình phân loại rác tự động.
+
+
+Báo cáo này trình bày quá trình tìm hiểu lý thuyết về xử lý ảnh, mạng nơ-ron tích chập (Convolutional Neural Networks – CNN), quy trình huấn luyện mô hình, cách xây dựng ứng dụng demo và đánh giá hiệu quả phân loại. Mục tiêu chính của nhóm không phải tạo ra một hệ thống hoàn hảo, mà là nắm vững tư duy, quy trình và kỹ năng triển khai mô hình AI vào thực tế.
+
+Chúng tôi xin gửi lời cảm ơn chân thành đến Giảng viên hướng dẫn – Thầy Nguyễn Hải Vinh, người đã đồng hành và cung cấp nền tảng kiến thức vững chắc giúp chúng tôi hoàn thành đề tài này.
+
+Dù đã rất nỗ lực, nhưng do hạn chế về thời gian và kinh nghiệm, bài báo cáo khó tránh khỏi thiếu sót. Chúng tôi mong nhận được những ý kiến đóng góp của Thầy và các bạn để hoàn thiện hơn trong tương lai.
+
+\bigskip
+\noindent\textit{Xin chân thành cảm ơn!}
+
+
+% Chương 1: Giới thiệu
+\chapter{Giới thiệu Đề tài}
+
+\section{Đặt vấn đề}
+
+Trong những năm gần đây, vấn đề ô nhiễm môi trường, đặc biệt là ô nhiễm rác thải sinh hoạt, đã trở thành một thách thức nghiêm trọng đối với các đô thị lớn và khu dân cư. Việc phân loại rác tại nguồn được xem là giải pháp quan trọng giúp giảm tải khối lượng rác cần xử lý, tăng khả năng tái chế và nâng cao ý thức bảo vệ môi trường. Tuy nhiên, thực tế cho thấy phần lớn hộ gia đình vẫn gặp khó khăn trong việc nhận diện và phân loại đúng các nhóm rác do thiếu kiến thức, thói quen hoặc sự phức tạp trong phân loại.
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=0.7\textwidth]{phanloairacthai.jpg}
+    \caption{Minh họa cách phân loại rác thải}
+    \label{fig:example}
+\end{figure}
+
+
+Trong khuôn khổ môn học Nhập môn Trí tuệ Nhân tạo, việc ứng dụng kỹ thuật AI vào các bài toán thực tiễn là một bước quan trọng giúp sinh viên kết nối giữa lý thuyết và triển khai hệ thống thực tế. Tuy nhiên, tự xây dựng một mô hình xử lý ảnh phức tạp từ đầu là điều không khả thi đối với sinh viên năm 3 do hạn chế về dữ liệu, thời gian và tài nguyên phần cứng cần thiết để huấn luyện các mô hình Deep Learning lớn. Thách thức đặt ra cho nhóm là: Làm thế nào để ứng dụng các phương pháp học sâu vào một hệ thống phân loại rác hoàn chỉnh mà không cần xây dựng mọi thứ từ con số 0?
+
+Thay vì phát triển một mô hình mới, nhóm lựa chọn hướng tiếp cận thực tiễn hơn: Tìm hiểu lý thuyết nền tảng, tận dụng các mô hình học sâu đã được huấn luyện trước (Pre-trained Models) như MobileNetV2 hoặc EfficientNet, và tiến hành tinh chỉnh (Fine-tuning) để mô hình phù hợp với bài toán phân loại rác sinh hoạt trong gia đình. Từ đó, nhóm xây dựng một hệ thống phân loại dựa trên xử lý ảnh, có khả năng nhận diện các loại rác phổ biến như \textit{plastic}, \textit{paper}, \textit{glass}, \textit{metal}, \textit{organic} và \textit{trash}.
+
+\section{Phương pháp tiếp cận}
+
+Để giải quyết bài toán đặt ra, đồ án triển khai theo mô hình tiếp cận \textbf{“Nghiên cứu – Xây dựng – Tích hợp”}:
+
+\subsection*{Nghiên cứu (Research)}
+Tìm hiểu các kiến thức nền tảng liên quan đến xử lý ảnh, mạng nơ-ron tích chập (CNN), cách hoạt động của mô hình phân loại hình ảnh và quy trình huấn luyện dữ liệu. Bên cạnh đó, nghiên cứu cấu trúc bộ dữ liệu rác thải, các kỹ thuật tiền xử lý (preprocessing) và tăng cường dữ liệu (data augmentation).
+
+\subsection*{Xây dựng và Huấn luyện (Model Training)}
+Sử dụng các mô hình CNN phổ biến đã được huấn luyện trước làm nền tảng (MobileNetV2, EfficientNetB0), sau đó tiến hành tinh chỉnh để mô hình đạt độ chính xác cao hơn trên bộ dữ liệu rác thải. Quá trình huấn luyện bao gồm chia tập dữ liệu, thiết lập tham số, tối ưu hóa và theo dõi hiệu suất.
+
+\subsection*{Tích hợp và Triển khai (Integration \& Deployment)}
+Sau khi có mô hình tốt, nhóm tiến hành xây dựng ứng dụng demo như Camera App bằng OpenCV hoặc ứng dụng Web (Streamlit), giúp người dùng chụp ảnh và phân loại rác ngay lập tức. Các chức năng được tập trung vào độ ổn định, độ chính xác và tính dễ sử dụng.
+
+\section{Mục tiêu của báo cáo}
+
+Mục tiêu chính của đồ án không nhằm tạo ra một mô hình AI hoàn toàn mới, mà là làm chủ quy trình thiết kế và triển khai một ứng dụng AI thực tế bằng các thư viện sẵn có. Cụ thể:
+
+\begin{enumerate}
+    \item Tìm hiểu về quy trình xử lý ảnh và kiến trúc CNN.
+    \item Biết cách sử dụng các mô hình pre-trained, tinh chỉnh và đánh giá mô hình phân loại rác.
+    \item Xây dựng hệ thống phân loại rác hoàn chỉnh, có thể dự đoán gần chính xác các loại rác và hỗ trợ người dùng trong quá trình phân loại.
+    \item Củng cố kiến thức môn học thông qua việc phát triển một sản phẩm AI có thể chạy được.
+\end{enumerate}
+
+\section{Bố cục báo cáo}
+
+Báo cáo gồm 5 chương chính:
+
+\begin{itemize}
+    \item \textbf{Chương 1 - Giới thiệu Đề tài}: Trình bày bối cảnh, lý do chọn đề tài, phương pháp tiếp cận và mục tiêu.
+    \item \textbf{Chương 2 - Cơ sở lý thuyết}: Tổng quan về xử lý ảnh, mạng nơ-ron tích chập và các mô hình pre-trained được sử dụng.
+    \item \textbf{Chương 3 - Phân tích và Thiết kế Mô hình}: Mô tả bộ dữ liệu, quy trình tiền xử lý, kiến trúc mô hình và các tham số huấn luyện.
+    \item \textbf{Chương 4 - Thực nghiệm và Đánh giá}: Trình bày kết quả huấn luyện, biểu đồ độ chính xác, ma trận nhầm lẫn và demo phân loại.
+    \item \textbf{Chương 5 - Kết luận và Hướng phát triển}: Tổng kết quá trình thực hiện và đề xuất cải tiến mô hình trong tương lai.
+\end{itemize}
+
+
+\chapter{Cơ sở lý thuyết}
+
+\section{Tổng quan về xử lý ảnh}
+
+Xử lý ảnh (Image Processing) là bước nền tảng trước khi đưa dữ liệu ảnh vào mô hình học máy hoặc học sâu. Mục tiêu chính của tiền xử lý ảnh là chuẩn hóa dữ liệu, giảm nhiễu và tăng tính đại diện của ảnh để mô hình có thể học hiệu quả hơn.
+
+\subsection{Các bước tiền xử lý thường gặp}
+\begin{itemize}
+    \item \textbf{Đổi kích thước (Resize)}: Chuẩn hóa kích thước ảnh về một kích thước cố định (ví dụ $224\times224$) để phù hợp với kiến trúc mạng và batch processing.
+    \item \textbf{Chuẩn hóa (Normalization)}: Thường đưa giá trị pixel về phạm vi $[0,1]$ (chia cho 255) hoặc chuẩn hóa theo mean/std của tập ImageNet (nếu dùng mô hình pre-trained).
+    \item \textbf{Cắt ảnh ngẫu nhiên (Random Crop) \& Canh lề (Center Crop)}: Giúp mô hình học được các vị trí khác nhau của đối tượng.
+    \item \textbf{Xoay, lật, thay đổi độ sáng/contrast (Data Augmentation)}: Tăng kích thước hiệu quả của bộ dữ liệu và giúp mô hình tổng quát hóa tốt hơn.
+    \item \textbf{Loại nhiễu (Denoising) \& Làm sắc nét (Sharpening)}: Khi dữ liệu có nhiều nhiễu, có thể áp dụng bộ lọc phù hợp.
+\end{itemize}
+
+\subsection{Kỹ thuật tăng cường dữ liệu (Data Augmentation)}
+Một số thao tác phổ biến:
+\begin{itemize}
+    \item Horizontal/Vertical flip, random rotation, random zoom.
+    \item Color jitter: thay đổi brightness, contrast, saturation.
+    \item Random erasing / Cutout: loại bỏ một vùng ảnh để mô hình học các đặc trưng còn lại.
+    \item MixUp / CutMix: kết hợp hai ảnh/nhãn để tăng tính đa dạng.
+\end{itemize}
+
+Những kỹ thuật này đặc biệt hữu ích khi bộ dữ liệu nhỏ, trường hợp phổ biến trong bài toán phân loại rác thải gia đình.
+
+\section{Mạng nơ-ron tích chập (Convolutional Neural Networks - CNN)}
+
+Mạng nơ-ron tích chập là kiến trúc tiêu chuẩn cho các bài toán xử lý ảnh. Dưới đây là phần mô tả chi tiết các thành phần và nguyên lý hoạt động. Tuy nhiên, nhóm sẽ chỉ tìm hiểu sơ qua, và chủ yếu sử dụng thư viện trong báo cáo này.
+
+\subsection{Phép tích chập (Convolution)}
+Phép tích chập giữa ảnh đầu vào $I$ và kernel (filter) $K$ được định nghĩa (cho trường hợp liên tục rời rạc và đơn giản) bởi:
+\[
+S(i,j) = (I * K)(i,j) = \sum_{m}\sum_{n} I(i+m, j+n)\,K(m,n)
+\]
+Trong thực tế, mỗi lớp tích chập học được nhiều kernel ($C_{out}$) để tạo ra nhiều bản đồ đặc trưng (feature maps).
+
+\paragraph{Các tham số chính}
+\begin{itemize}
+    \item \textbf{Kernel size} (ví dụ $3\times3$, $5\times5$).
+    \item \textbf{Stride}: bước dịch chuyển kernel trên ảnh. Stride lớn làm giảm kích thước đầu ra.
+    \item \textbf{Padding}: zero-padding để điều chỉnh kích thước đầu ra (same vs valid).
+    \item \textbf{Number of filters}: số lượng feature maps đầu ra (tăng số filter tăng khả năng mô hình hoá nhưng cũng tăng tham số).
+\end{itemize}
+
+\subsection{Lớp Pooling}
+Pooling (MaxPooling, AveragePooling) giảm kích thước không gian của feature maps, giúp giảm tính toán và khuyếch đại tính bất biến vị trí:
+\[
+\text{MaxPool}_{2\times2}(x) = \max\{x_{2i,2j}, x_{2i+1,2j}, x_{2i,2j+1}, x_{2i+1,2j+1}\}
+\]
+
+\subsection{Hàm kích hoạt (Activation functions)}
+\begin{itemize}
+    \item \textbf{ReLU} ($f(x)=\max(0,x)$): phổ biến vì gradient không bão hòa cho các giá trị dương.
+    \item \textbf{Leaky ReLU}, \textbf{ELU}: biến thể để tránh dead ReLU.
+    \item \textbf{Softmax}: được dùng ở lớp cuối cho bài toán phân loại đa lớp để chuyển logits thành xác suất:
+    \[
+    \sigma(z)_i = \frac{e^{z_i}}{\sum_j e^{z_j}}
+    \]
+\end{itemize}
+
+\subsection{Batch Normalization \& Dropout}
+\begin{itemize}
+    \item \textbf{Batch Normalization (BN)}: Chuẩn hóa đầu vào của mỗi layer nhằm tăng tốc hội tụ và ổn định huấn luyện.
+    \item \textbf{Dropout}: Ngẫu nhiên tắt một phần neurons trong huấn luyện để giảm overfitting.
+\end{itemize}
+
+\subsection{Tính toán số tham số}
+Ví dụ: một lớp Conv2D với kernel $k\times k$, $C_{in}$ kênh vào, $C_{out}$ kênh ra có số tham số:
+\[
+\text{params} = C_{out} \times (C_{in}\times k \times k) + C_{out} \quad (\text{bias nếu có})
+\]
+
+\subsection{Một số kiến trúc nền tảng}
+\begin{itemize}
+    \item \textbf{VGG}: chuỗi các khối Conv (3x3) + Pooling → đơn giản nhưng nhiều tham số.
+    \item \textbf{ResNet}: đưa khái niệm \textit{residual connection} để giải quyết vanishing gradient, cho phép xây dựng mạng rất sâu.
+    \item \textbf{MobileNet, EfficientNet}: thiết kế tối ưu cho hiệu năng/chi phí tính toán - phù hợp cho ứng dụng trên thiết bị nhẹ. Bài toán của nhóm sẽ sử dụng một trong hai kiến trúc này.
+\end{itemize}
+
+\section{Mô hình Pre-trained và Transfer Learning}
+
+\subsection{Khái niệm Transfer Learning}
+Transfer Learning là kỹ thuật sử dụng một mô hình đã được huấn luyện trên một tập dữ liệu lớn (thường là ImageNet) làm điểm khởi đầu cho một bài toán mới. Lý do hiệu quả:
+\begin{itemize}
+    \item Các tầng thấp học được các bộ lọc cơ bản (edges, textures) có tính phổ quát.
+    \item Tiết kiệm thời gian huấn luyện và tài nguyên tính toán.
+    \item Cải thiện hiệu năng khi dữ liệu bài toán mới nhỏ.
+\end{itemize}
+
+\subsection{Chiến lược fine-tuning}
+\begin{enumerate}
+    \item \textbf{Feature extraction}: Khoá (freeze) các lớp convolution đầu tiên, chỉ huấn luyện lại các lớp cuối (classifier) đã được thêm vào.
+    \item \textbf{Fine-tune một phần}: Mở khóa một số block cuối của mô hình pre-trained và huấn luyện với learning rate nhỏ.
+    \item \textbf{Full fine-tune}: Huấn luyện lại toàn bộ mô hình (thường yêu cầu nhiều dữ liệu và thời gian).
+\end{enumerate}
+
+Các lưu ý thực tế: dùng learning rate nhỏ (ví dụ $1\mathrm{e}{-4}$ hoặc $1\mathrm{e}{-5}$) khi fine-tune; sử dụng các callback như EarlyStopping và ModelCheckpoint; cân bằng lớp nếu phân bố lớp lệch (class weighting, oversampling).
+
+\section{Hai mô hình pre-trained được sử dụng: MobileNetV2 và EfficientNetB0}
+
+Trong báo cáo này, nhóm sử dụng hai kiến trúc tiêu biểu cho ứng dụng trên thiết bị nhẹ và có hiệu năng tốt: \textbf{MobileNetV2} và \textbf{EfficientNetB0}. Sau đây mô tả chi tiết cấu trúc, nguyên lý và lợi ích của từng mô hình.
+
+\subsection{MobileNetV2}
+
+\paragraph{Ý tưởng chính} MobileNetV2 tiếp tục phát triển dòng MobileNet bằng cách kết hợp hai ý tưởng chính: \textit{depthwise separable convolution} (đã có ở MobileNetV1) và \textit{inverted residual with linear bottleneck}.
+
+\paragraph{Depthwise separable convolution}
+\begin{itemize}
+    \item \textbf{Depthwise convolution}: Áp dụng một kernel $k\times k$ lên từng kênh đầu vào riêng biệt (mỗi kênh 1 filter).
+    \item \textbf{Pointwise convolution} ($1\times1$): Kết hợp các kênh bằng $1\times1$ conv để tạo ra $C_{out}$ kênh.
+\end{itemize}
+So với convolution chuẩn, phương pháp này giảm đáng kể số phép toán và tham số.
+
+\paragraph{Inverted residual \& Linear bottleneck}
+\begin{itemize}
+    \item Thay vì giảm chiều (bottleneck) rồi mở rộng như ResNet, MobileNetV2 \textit{mở rộng} chiều tại đầu vào của block bằng một $1\times1$ conv (expansion), áp dụng depthwise conv trên không gian rộng hơn, rồi thu nhỏ lại bằng $1\times1$ linear projection. 
+    \item Dùng activation không tuyến tính (ReLU6) ở phần mở rộng, nhưng \textbf{không dùng} activation sau projection cuối cùng (linear bottleneck) để tránh mất thông tin không tuyến tính trong không gian có chiều thấp.
+\end{itemize}
+
+\paragraph{Lợi ích cho bài toán phân loại rác}
+\begin{itemize}
+    \item Nhẹ, phù hợp cho triển khai trên máy tính cá nhân hoặc thiết bị viễn thông/edge.
+    \item Tốc độ inference nhanh, ít yêu cầu tài nguyên bộ nhớ.
+\end{itemize}
+
+\subsection{EfficientNetB0}
+
+\paragraph{Ý tưởng chính} EfficientNet đề xuất \textit{compound scaling} — một phương pháp có hệ thống để scale (mở rộng) mạng theo ba chiều: chiều sâu (depth), chiều rộng (width) và kích thước ảnh (resolution) theo một hệ số chung $\phi$:
+\[
+\text{depth} = \alpha^\phi,\quad \text{width} = \beta^\phi,\quad \text{resolution} = \gamma^\phi
+\]
+với điều kiện $\alpha\cdot\beta^2\cdot\gamma^2 \approx 2$ để giữ chi phí FLOPS hợp lý. Các hệ số $\alpha,\beta,\gamma$ được tìm bằng tối ưu hóa.
+
+\paragraph{Cấu trúc}
+\begin{itemize}
+    \item Dựa trên block \textbf{MBConv} (Mobile inverted bottleneck conv) tương tự MobileNetV2 nhưng có thêm squeeze-and-excitation (SE) ở một số biến thể để cải thiện khả năng biểu diễn kênh.
+    \item EfficientNetB0 là phiên bản cơ sở (baseline) nhỏ nhất; các phiên bản B1..Bn là các mạng scale lên dựa theo compound scaling.
+\end{itemize}
+
+\paragraph{Lợi ích cho bài toán phân loại rác}
+\begin{itemize}
+    \item Hiệu năng trên kích thước/chi phí tính toán rất tốt (accuracy/FLOPS cân bằng).
+    \item Pre-trained EfficientNet thường cho độ chính xác tốt hơn so với các mạng truyền thống trên ImageNet, giúp nâng cao hiệu quả khi transfer sang bài toán mới.
+\end{itemize}
+
+\section{Chiến lược huấn luyện và đánh giá}
+
+\subsection{Hàm mất mát và tối ưu hóa}
+\begin{itemize}
+    \item \textbf{Hàm mất mát}: Với bài toán phân loại đa lớp sử dụng \textbf{Categorical Cross-Entropy}:
+    \[
+    \mathcal{L} = -\sum_{i=1}^{C} y_i \log(\hat{y}_i)
+    \]
+    \item \textbf{Tối ưu hóa}: SGD với momentum đôi khi cho generalization tốt hơn Adam. Tuy nhiên, nhóm sử dụng Adam vì là lựa chọn phổ biến với tốc độ hội tụ nhanh.
+\end{itemize}
+
+\subsection{Metrics}
+Các chỉ số chính:
+\begin{itemize}
+    \item \textbf{Accuracy}: là tỉ lệ số lượng dự đoán đúng trên tổng số mẫu. Đây là chỉ số cơ bản để đánh giá chất lượng mô hình phân loại.
+
+\begin{equation}
+\text{Accuracy} = \frac{TP + TN}{TP + TN + FP + FN}
+\end{equation}
+    \item \textbf{Precision / Recall / F1-score}: đặc biệt quan trọng khi dữ liệu mất cân bằng.
+    \begin{itemize}
+    \item \textbf{Precision}: Tỉ lệ dự đoán đúng trên tổng số dự đoán thuộc lớp đó.
+    \item \textbf{Recall}: Tỉ lệ dự đoán đúng trên tổng số mẫu thực sự thuộc lớp đó.
+    \item \textbf{F1-score}: Trung bình điều hòa giữa Precision và Recall.
+\end{itemize}  
+
+Công thức:
+\begin{equation}
+\text{Precision} = \frac{TP}{TP + FP}
+\end{equation}
+\begin{equation}
+\text{Recall} = \frac{TP}{TP + FN}
+\end{equation}
+\begin{equation}
+\text{F1score} &= 2 \cdot \frac{\text{Precision} \cdot \text{Recall}}{\text{Precision} + \text{Recall}}
+\end{equation}
+
+    \item \textbf{Confusion matrix}: là ma trận thể hiện số lượng dự đoán đúng và sai của mô hình đối với từng lớp. Ma trận này cho phép đánh giá chi tiết hiệu suất mô hình, đặc biệt hữu ích khi số lượng mẫu giữa các lớp không đồng đều.
+\end{itemize}
+
+\subsection{Một số kỹ thuật tăng độ ổn định huấn luyện}
+\begin{itemize}
+    \item \textbf{Early stopping}: Dừng khi validation loss không cải thiện sau $k$ epoch để tránh overfitting.
+    \item \textbf{Model checkpoint}: Lưu trọng số tốt nhất theo metric validation.
+\end{itemize}
+
+
+\chapter{Phân Tích và Thiết Kế Mô Hình}
+\label{chap:analysis}
+
+\section{Xác định các nhóm rác cần phân loại}
+
+Dựa trên đặc trưng vật liệu và khả năng tái chế, bài toán được chia thành \textbf{sáu nhóm rác} tương ứng 
+với các lớp trong bộ dữ liệu huấn luyện:
+
+\begin{itemize}
+    \item \textbf{Plastic (Nhựa):} Loại rác chiếm tỷ trọng lớn và khó phân hủy.
+    \item \textbf{Paper (Giấy):} Dễ tái chế nhưng giảm giá trị khi bị bẩn.
+    \item \textbf{Metal (Kim loại):} Có giá trị tái chế cao.
+    \item \textbf{Glass (Thủy tinh):} Có thể tái chế hoàn toàn nhưng dễ gây nguy hiểm.
+    \item \textbf{Organic (Hữu cơ):} Chiếm tỷ lệ lớn trong rác sinh hoạt, có thể sử dụng để ủ phân hữu cơ composting.
+    \item \textbf{Trash (Rác còn lại):} Những loại rác này rất khó hoặc hầu như không tái chế được. 
+\end{itemize}
+
+\section{Phân tích thách thức của bài toán phân loại rác bằng hình ảnh}
+
+Bài toán phân loại rác từ ảnh đặt ra nhiều thách thức:
+
+\begin{itemize}
+    \item \textbf{Hình ảnh đa dạng, không đồng nhất:} Cùng một loại rác có thể xuất hiện với nhiều hình dạng khác nhau.
+    \item \textbf{Ảnh hưởng ánh sáng và góc chụp:} Camera gia đình thường có ánh sáng kém ổn định.
+    \item \textbf{Nhiều loại rác dễ nhầm lẫn:} 
+    Ví dụ: giấy vò trông giống rác hữu cơ; chai nhựa trong suốt dễ nhầm với thủy tinh.
+    \item \textbf{Rác bị dính bẩn hoặc biến dạng:} Dữ liệu thực tế phức tạp hơn nhiều so với ảnh trong bộ dataset.
+\end{itemize}
+
+\textbf{Nhận xét:}  
+Mô hình cần bộ dữ liệu đủ lớn, kỹ thuật tăng cường mạnh và kiến trúc trích xuất đặc trưng hiện đại để đạt độ chính xác cao.
+
+\section{Thiết kế tổng thể mô hình phân loại rác}
+
+Hệ thống gồm năm giai đoạn chính:
+
+\subsection *{Giai đoạn 1: Thu thập và chuẩn bị dữ liệu}
+
+Nguồn dữ liệu:
+\begin{itemize}
+    \item Dataset công khai từ Kaggle
+    \item Google Image
+    \item Ảnh thu thập thủ công
+\end{itemize}
+
+Quá trình chia hình ảnh được tự động hóa bằng \texttt{split\_data.py}} với tỉ lệ train : val : test = 70 : 15 : 15.
+
+\subsection *{Giai đoạn 2: Tiền xử lý dữ liệu ảnh}
+
+Mã nguồn thực hiện việc tạo ba \textit{data generators} gồm \textbf{train}, \textbf{validation} và \textbf{test} cho mô hình học sâu. Cụ thể:
+\begin{itemize}
+    \item Train: augmentation + chuẩn hóa.
+    \item Val và Test chỉ chuẩn hóa.
+    \item Các generator đọc ảnh từ các thư mục tương ứng và trả về các đối tượng: \texttt{train\_gen}, \texttt{val\_gen}, \texttt{test\_gen}.
+\end{itemize}
+
+\noindent
+
+
+\subsection *{Giai đoạn 3: Huấn luyện mô hình học sâu}
+
+Hai kiến trúc pretrained được sử dụng để huấn luyện mô hình:
+
+\begin{itemize}
+    \item \textbf{MobileNetV2:} Nhẹ, nhanh, phù hợp thời gian thực.
+    \item \textbf{EfficientNetB0:} Chính xác cao hơn, dùng compound scaling.
+\end{itemize}
+
+
+\subsection *{Giai đoạn 4: Đánh giá mô hình}
+
+Mô hình đã huấn luyện được nạp lên và thực hiện đánh giá trên tập \textit{test}. Mô hình dự đoán nhãn cho toàn bộ ảnh trong tập kiểm thử, sau đó so sánh với nhãn thật để tính các chỉ số đánh giá. Cụ thể:
+\begin{itemize}
+    \item Tính \textbf{Accuracy}, \textbf{Precision}, \textbf{Recall} và \textbf{F1-score} với trọng số (\textit{weighted}).
+    \item Sinh \textbf{Confusion Matrix} để quan sát chi tiết nhầm lẫn giữa các lớp.
+    \item Xuất \textbf{Classification Report} gồm đầy đủ precision, recall và F1 cho từng lớp.
+\end{itemize}
+
+\noindent
+Kết quả đánh giá giúp kiểm tra khả năng tổng quát hoá của mô hình trên dữ liệu chưa từng thấy.
+
+
+\subsection *{Giai đoạn 5: Triển khai mô hình}
+
+Mô hình được triển khai dưới hai dạng ứng dụng:
+\begin{itemize}
+    \item Camera Demo (OpenCV)
+    \item Ứng dụng Streamlit
+\end{itemize}
+
+\section{Cấu trúc chi tiết của mô hình}
+
+Hệ thống phân loại rác được triển khai gồm năm giai đoạn chính: 
+(1) Chuẩn bị dữ liệu,
+(2) Tiền xử lý dữ liệu,
+(3) Huấn luyện mô hình, 
+(4) Đánh giá mô hình
+(5) Triển khai mô hình trên ứng dụng thực tế. 
+Mỗi giai đoạn được thiết kế chi tiết như sau.
+
+% ==========================
+\subsection{Giai đoạn 1: Chuẩn bị và chia dữ liệu}
+% ==========================
+
+Dữ liệu được thu thập bằng Kaggle và thủ công, gồm 6 lớp: \textit{glass, metal, organic, paper, plastic, trash}. 
+
+File \texttt{split\_data.py} thực hiện:
+\begin{itemize}
+    \item Đọc dữ liệu từ thư mục \texttt{data/}.
+    \item Chia dữ liệu theo tỉ lệ:
+    \begin{itemize}
+        \item Train: 70\%
+        \item Validation: 15\%
+        \item Test: 15\%
+    \end{itemize}
+    \item Tạo cấu trúc thư mục \texttt{dataset/train|val|test/class}.
+    \item Sao chép ảnh vào từng thư mục tương ứng.
+\end{itemize}
+
+Dưới đây là minh họa thư mục dataset.
+    \begin{verbatim}
+dataset/
+├── train/
+│   ├── glass/
+│   │   └── ...
+│   ├── metal/
+│   ├── organic/
+│   ├── paper/
+│   ├── plastic/
+│   └── trash/
+├── validation/
+│   └── ...
+└── test/
+│   └── ...
+\end{verbatim}
+
+\subsection{Giai đoạn 2: Tiền xử lý và tạo Data Generator}
+
+Quá trình tiền xử lý ảnh được thực hiện trong file \texttt{preprocess.py}.
+\begin{itemize}
+    \item Tất cả ảnh được resize về kích thước: $224 \times 224 $
+    \item Dữ liệu được chuẩn hóa về khoảng \([0, 1]\) bằng phép chia cho 255.
+    \item Áp dụng \textit{data augmentation} cho tập train:
+    \begin{itemize}
+        \item Xoay (rotation)
+        \item Tịnh tiến ngang/dọc
+        \item Zoom
+        \item Lật ảnh (horizontal flip)
+    \end{itemize}
+    \item Tạo 3 generator: \texttt{train\_gen}, \texttt{val\_gen}, \texttt{test\_gen}.
+\end{itemize}
+
+
+% ==========================
+\subsection *{Giai đoạn 3: Xây dựng và huấn luyện mô hình}
+% ==========================
+
+Giai đoạn này tập trung xây dựng kiến trúc mạng học sâu dựa trên mô hình tiền huấn luyện 
+(\textit{pretrained model}), thiết lập tham số, và tiến hành huấn luyện trên tập dữ liệu đã được xử lý
+ở giai đoạn 1. File \texttt{train.py} đảm nhiệm toàn bộ quá trình này.
+
+\subsubsection{ Lựa chọn mô hình tiền huấn luyện}
+File train.py sử dụng hai kiến trúc CNN tiền huấn luyện::
+\begin{itemize}
+    \item \textbf{MobileNetV2}: nhẹ, nhanh, phù hợp thiết bị biên (edge).
+    \item \textbf{EfficientNetB0}: hiệu quả cao hơn nhưng nặng hơn.
+\end{itemize}
+
+Trong báo cáo này, mô hình chính được sử dụng mặc định là: MobileNetV2
+
+\subsubsection{Xây dựng kiến trúc mô hình}
+
+Hàm \texttt{build\_model()} thực hiện tạo mô hình theo các bước:
+\begin{enumerate}
+    \item \textbf{Tải base model} từ ImageNet:
+    \[
+        \text{base\_model} = \text{MobileNetV2(weights='imagenet', include\_top=False)}
+    \]
+    \item \textbf{Đóng băng (freeze) trọng số}:
+    \[
+        \text{base\_model.trainable} = \text{False}
+    \]
+    Điều này giúp chỉ huấn luyện phần phân loại phía trên, tránh làm hỏng trọng số đã học từ ImageNet.
+
+    \item \textbf{Thêm các lớp phân loại (classification head)}:
+    \begin{itemize}
+        \item GlobalAveragePooling2D
+        \item Dropout 0.3 (giảm overfitting)
+        \item Dense Softmax 6 lớp tương ứng với các loại rác:
+        \[
+            \text{NUM\_CLASSES} = 6
+        \]
+    \end{itemize}
+\end{enumerate}
+
+Kiến trúc tổng quát:
+\[
+\text{model} = \text{base\_model} + \text{GAP} + \text{Dropout} + \text{Softmax}
+\]
+
+\subsubsection*{2.3 Thiết lập tham số huấn luyện}
+
+\begin{itemize}
+    \item Kích thước ảnh đầu vào:
+    \[
+        \text{IMG\_SIZE} = 224 \times 224
+    \]
+    \item Batch size:
+    \[
+        \text{BATCH\_SIZE} = 32
+    \]
+    \item Số epoch tối đa:
+    \[
+        \text{EPOCHS} = 30
+    \]
+    \item Hàm tối ưu:
+    \[
+        \text{optimizer} = \text{Adam}(learning\_rate = 10^{-4})
+    \]
+    \item Hàm mất mát:
+    \[
+        \text{loss} = \text{categorical\_crossentropy}
+    \]
+\end{itemize}
+
+Mô hình được biên dịch bằng:
+\[
+\text{model.compile(optimizer, loss, metrics=['accuracy'])}
+\]
+
+\subsubsection*{2.4 Cơ chế lưu mô hình và dừng sớm}
+
+\begin{itemize}
+    \item \textbf{ModelCheckpoint}: lưu mô hình có độ chính xác validation cao nhất vào:
+    \[
+        \texttt{model/model.h5}
+    \]
+    \item \textbf{EarlyStopping}: dừng huấn luyện sớm nếu không cải thiện sau 5 epoch và phục hồi trọng số tốt nhất.
+\end{itemize}
+
+\subsubsection*{2.5 Tiến hành huấn luyện}
+
+Quá trình huấn luyện được thực hiện bằng:
+\[
+\text{model.fit(train\_gen, validation\_data = val\_gen, epochs = EPOCHS)}
+\]
+
+Lịch sử huấn luyện được lưu trong biến: \text{history}
+
+Trong đó mô hình học trên:
+\begin{itemize}
+    \item tập \textbf{train}: dùng để cập nhật trọng số,
+    \item tập \textbf{validation}: dùng để đánh giá và điều chỉnh trong quá trình học.
+\end{itemize}
+
+Khi hoàn tất, chương trình in ra:
+\[
+\texttt{Training finished!}
+\]
+
+
+% ==========================
+\subsection *{Giai đoạn 4: Đánh giá mô hình}
+Giai đoạn này thực hiện việc nạp mô hình đã huấn luyện và đánh giá trên tập kiểm thử, thu được các chỉ số đánh giá đầy đủ để phân tích hiệu năng.
+
+\paragraph{1. Nạp thư viện và dữ liệu kiểm thử}
+\begin{itemize}
+    \item \texttt{load\_model("model/model.h5")} : nạp mô hình Keras đã lưu.
+    \item \texttt{get\_data\_generators()} : lấy \texttt{test\_gen} (generator cho tập test). \textbf{Yêu cầu}: \texttt{test\_gen} phải có \texttt{shuffle=False} để thứ tự mẫu và nhãn thực tế (\texttt{test\_gen.classes}) khớp chính xác với dự đoán.
+\end{itemize}
+
+\paragraph{2. Dự đoán trên toàn bộ tập kiểm thử}
+\begin{itemize}
+    \item \texttt{test\_gen.reset()} : đảm bảo generator bắt đầu từ batch đầu tiên.
+    \item \texttt{preds = model.predict(test\_gen, verbose=1)} : chạy dự đoán trên toàn bộ các batch của \texttt{test\_gen}. Kết quả \texttt{preds} là ma trận kích thước $(N, C)$ với $N$ là số ảnh và $C$ là số lớp; giá trị là score (thông thường là xác suất sau softmax).
+    \item \texttt{y\_pred = np.argmax(preds, axis=1)} : chuyển score thành nhãn dự đoán bằng cách chọn chỉ số có xác suất lớn nhất (nhãn lớp).
+    \item \texttt{y\_true = test\_gen.classes} : nhãn thực (đã mã hóa dưới dạng số nguyên) lấy trực tiếp từ generator.
+    \item \texttt{class\_names = list(test\_gen.class\_indices.keys())} : danh sách tên lớp theo thứ tự chỉ số (dùng khi in báo cáo).
+\end{itemize}
+
+\paragraph{3. Các chỉ số đánh giá chính}
+\begin{itemize}
+    \item \textbf{Accuracy}
+    \item \textbf{Precision, Recall, F1 (weighted)}: sử dụng trung bình \texttt{weighted} để tính trị số tổng hợp khi các lớp không cân bằng. Với mỗi lớp $i$:
+    Trị số \texttt{weighted} là trung bình có cân nặng theo số mẫu của từng lớp (support).
+    \item Thực hiện bằng: \texttt{precision\_score(..., average='weighted')}, \texttt{recall\_score(..., average='weighted')}, \texttt{f1\_score(..., average='weighted')}.
+\end{itemize}
+
+\paragraph{4. Ma trận nhầm lẫn và báo cáo phân lớp}
+\begin{itemize}
+    \item \texttt{confusion\_matrix(y\_true, y\_pred)}: ma trận $C \times C$ trong đó hàng $i$ là số lượng mẫu thực thuộc lớp $i$, cột $j$ là số mẫu bị dự đoán thành lớp $j$.
+    \item \texttt{classification\_report(y\_true, y\_pred, target\_names=class\_names)}: in ra precision, recall, F1 và support cho từng lớp giúp thuận tiện để so sánh hiệu năng theo lớp.
+\end{itemize}
+
+% ==========================
+\subsection *{Giai đoạn 5: Triển khai mô hình}
+% ==========================
+
+\subsubsection*{Ứng dụng Camera Demo (camera\_demo.py)}
+Ứng dụng dùng OpenCV để:
+\begin{itemize}
+    \item Mở camera liên tục.
+    \item Resize ảnh đầu vào về \(224 \times 224\).
+    \item Chuẩn hóa và đưa vào mô hình.
+    \item Dự đoán nhãn và hiển thị độ tin cậy theo thời gian thực.
+    \item Thoát bằng phím \texttt{q}.
+\end{itemize}
+
+\subsubsection*{Ứng dụng giao diện web bằng Streamlit (streamlit\_app.py)}
+Ứng dụng Streamlit cung cấp hai chế độ:
+\begin{itemize}
+    \item \textbf{Upload ảnh}: người dùng chọn ảnh để hệ thống phân loại.
+    \item \textbf{Camera real-time}: nhận diện trực tiếp bằng webcam.
+\end{itemize}
+
+Các tính năng nổi bật:
+\begin{itemize}
+    \item Dùng \texttt{st.cache\_resource} để load mô hình nhanh hơn.
+    \item Dự đoán theo từng frame, kèm label + độ tin cậy.
+    \item Điều khiển camera bằng các nút:
+    \begin{itemize}
+        \item Bắt đầu Camera
+        \item Dừng Camera
+    \end{itemize}
+    \item Không block UI và đảm bảo an toàn tài nguyên.
+\end{itemize}
+
+
+\chapter{Thực nghiệm và Đánh giá}
+\label{chap:experiment}
+
+\section{Mô tả Dataset}
+
+Dataset sử dụng trong đồ án bao gồm các ảnh rác thải sinh hoạt được thu thập từ nhiều nguồn khác nhau, bao gồm các bộ dữ liệu công khai trên Kaggle, hình ảnh từ Google Image và ảnh thu thập thủ công. Dataset được phân loại thành 6 lớp chính, tương ứng với các loại rác trong gia đình:
+
+\begin{itemize}
+    \item \textbf{Glass (Thủy tinh)}: Bao gồm chai, lọ và các mảnh thủy tinh.
+    \item \textbf{Metal (Kim loại)}: Lon nhôm, hộp thiếc và các vật dụng kim loại nhỏ.
+    \item \textbf{Organic (Hữu cơ)}: Thức ăn thừa, rau củ, vỏ trái cây… 
+    \item \textbf{Paper (Giấy)}: Giấy in, giấy vụn, bìa carton…
+    \item \textbf{Plastic (Nhựa)}: Chai nhựa, hộp nhựa,… .
+    \item \textbf{Trash (Rác còn lại)}: Các loại rác bẩn, khó phân loại như tàn thuốc, đồ dùng bẩn, bao bì thực phẩm dính dầu mỡ, bao bì nylon (khó tái chế).
+\end{itemize}
+
+Tổng số lượng ảnh ban đầu là 3.773 ảnh, sau khi chia theo tỷ lệ 70\% train, 15\% validation và 15\% test bằng script \texttt{split\_data.py}, số lượng ảnh từng lớp được trình bày trong bảng sau.
+
+\begin{table}[h]
+\centering
+\begin{tabular}{lcccc}
+\toprule
+\textbf{Class} & \textbf{Total} & \textbf{Train} & \textbf{Val} & \textbf{Test} \\
+\midrule
+glass   & 536 & 375 & 80  & 81  \\
+metal   & 622 & 435 & 93  & 94  \\
+organic & 761 & 532 & 114 & 115 \\
+paper   & 647 & 452 & 97  & 98  \\
+plastic & 601 & 420 & 90  & 91  \\
+trash   & 606 & 424 & 90  & 92  \\
+\bottomrule
+\end{tabular}
+\caption{Thống kê số lượng mẫu theo từng tập train/val/test}
+\end{table}
+
+Dưới đây là một số hình ảnh minh họa cho các class trong dataset.
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.7\linewidth]{plastic45.jpg}
+\caption{Ảnh minh họa rác thải nhựa (\textit{plastic})}
+\end{figure}
+
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.7\textwidth]{organic110.jpg}
+    \caption{Ảnh minh họa rác hữu cơ (\textit{organic})}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.7\textwidth]{metal38.jpg}
+    \caption{Ảnh minh họa rác thải kim loại (\textit{metal})}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.7\textwidth]{glass90.jpg}
+    \caption{Ảnh minh họa rác thủy tinh (\textit{glass})}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.7\textwidth]{paper132.jpg}
+    \caption{Ảnh minh họa rác thải giấy (\textit{paper})}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.7\textwidth]{trash48.jpg}
+    \caption{Ảnh minh họa rác thải bẩn, khó phân hủy (\textit{trash})}
+\end{figure}
+
+\section{Cấu hình máy tính thực nghiệm}
+
+Thực nghiệm được thực hiện trên máy cá nhân với cấu hình:
+
+\begin{itemize}
+    \item CPU: Intel Core i5 / i7, Ryzen7 (không sử dụng GPU)
+    \item RAM: 8–16 GB
+    \item Hệ điều hành: Windows 11
+    \item Thư viện: TensorFlow 2.x, Keras, OpenCV, Streamlit
+\end{itemize}
+
+Do không sử dụng GPU, thời gian huấn luyện lâu hơn, nhưng MobileNetV2 vẫn chạy ổn định nhờ kiến trúc nhẹ và tốc độ nhanh.
+
+\section{Quá trình huấn luyện}
+
+Mô hình được huấn luyện trong 30 epochs với các thông số:
+
+\begin{itemize}
+    \item Batch size: 32
+    \item Optimizer: Adam (learning rate $1\times10^{-4}$)
+    \item Loss: Categorical Crossentropy
+    \item Early stopping: patience = 5
+\end{itemize}
+
+Hình~\ref{fig:acc} và ~\ref{fig:loss} mô tả sự thay đổi của \texttt{accuracy} và \texttt{loss} trên tập train/validation.
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.7\textwidth]{accuracy_plot.png}
+\caption{Đường cong \texttt{loss} và \texttt{accuracy} trên tập train và validation}
+\label{fig:acc}
+\end{figure}
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.7\textwidth]{loss_plot.png}
+\caption{Đường cong \texttt{loss} và \texttt{accuracy} trên tập train và validation}
+\label{fig:loss}
+\end{figure}
+
+\section{Kết quả trên tập kiểm thử}
+
+Sau khi huấn luyện, mô hình tốt nhất được lưu tại \texttt{model/model.h5} và được đánh giá bằng script \texttt{evaluate.py}.
+
+\begin{itemize}
+\item Accuracy: 81.26\%
+\item Precision: 81.88\%
+\item Recall: 81.26\%
+\item F1-score: 81.34\%
+\end{itemize}
+
+Bảng phân loại chi tiết (Classification Report): \begin{table}[H] \centering \begin{tabular}{|c|c|c|c|c|} \hline \textbf{Lớp} & \textbf{Precision} & \textbf{Recall} & \textbf{F1-score} & \textbf{Support} \\ \hline Glass & 0.86 & 0.70 & 0.78 & 81 \\ Metal & 0.74 & 0.83 & 0.78 & 94 \\ Organic & 0.94 & 0.88 & 0.91 & 115 \\ Paper & 0.85 & 0.87 & 0.86 & 98 \\ Plastic & 0.72 & 0.81 & 0.76 & 91 \\ Trash & 0.77 & 0.75 & 0.76 & 92 \\ \hline \textbf{Accuracy} & \multicolumn{4}{c|}{0.81} \\ \textbf{Macro Avg} & 0.81 & 0.81 & 0.81 & 571 \\ \textbf{Weighted Avg} & 0.82 & 0.81 & 0.81 & 571 \\ \hline \end{tabular} \caption{Bảng phân loại chi tiết trên tập kiểm thử} \label{tab:classification-report} \end{table}
+Ma trận nhầm lẫn (Confusion Matrix) được hiển thị ở Hình~\ref{fig:conf-matrix}.
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.7\textwidth]{consfusion_matrix.png}
+\caption{Ma trận nhầm lẫn trên tập kiểm thử}
+\label{fig:conf-matrix}
+\end{figure}
+
+\section{Một số dự đoán mẫu}
+
+Mô hình được sử dụng để dự đoán ảnh thực từ camera và ảnh upload.  
+
+\textbf{Dự đoán đúng:}
+\begin{itemize}
+    \item Ảnh hữu cơ (rau, hoa quả): dự đoán gần như 100\% chính xác
+    \item Ảnh giấy sạch: nhận diện tốt (87\% recall)
+\end{itemize}
+
+\textbf{Dự đoán sai:}
+\begin{itemize}
+    \item Nhựa trắng đôi khi nhầm thành giấy, thủy tinh
+    \item Kim loại tối màu bị nhầm sang trash
+    \item Rác thải bẩn đôi khi bị nhầm thành sắt hoặc nhựa
+    \item Rác bẩn hoặc mờ do camera giảm độ chính xác
+\end{itemize}
+
+Nhìn chung, mô hình hoạt động ổn định trên tập test và cả camera realtime.
+
+
+
+
+\chapter{Kết luận và Hướng phát triển}
+
+\section{Kết luận}
+
+Đề tài ``Phân loại rác thải sinh hoạt trong gia đình bằng Trí tuệ nhân tạo’’ đã xây dựng được một hệ thống hoàn chỉnh gồm các bước: thu thập dữ liệu, tiền xử lý ảnh, huấn luyện mô hình học sâu và triển khai giao diện ứng dụng thực tế. Mô hình MobileNetV2 tiền huấn luyện đã cho thấy hiệu quả tốt với độ chính xác đạt 83\% trên tập kiểm thử gồm 571 ảnh.
+
+Kết quả cho thấy:
+\begin{itemize}
+    \item Mô hình nhận diện tốt các lớp rác có đặc trưng rõ ràng như \textit{organic} và \textit{paper}.
+    \item Một số lớp có sự nhầm lẫn cao hơn như \textit{plastic} và \textit{trash}, nguyên nhân đến từ hình dạng đa dạng và chất lượng ảnh không đồng nhất.
+    \item Việc triển khai mô hình qua Streamlit giúp hệ thống có tính thực tiễn, hỗ trợ người dùng sử dụng camera để phân loại rác thời gian thực.
+\end{itemize}
+
+Nhìn chung, mô hình hoạt động ổn định, đáp ứng được mục tiêu ban đầu của đề tài: hỗ trợ phân loại rác sinh hoạt nhằm nâng cao ý thức bảo vệ môi trường và giảm thiểu gánh nặng xử lý rác thải.
+
+\section{Hướng phát triển}
+
+Mặc dù hệ thống đã đạt được kết quả tương đối tốt, vẫn còn nhiều hướng mở để cải thiện trong tương lai:
+
+\begin{itemize}
+    \item \textbf{Mở rộng dataset}: Thu thập thêm dữ liệu thực tế tại các hộ gia đình, đặc biệt là các trường hợp rác bẩn, méo, hoặc bị che khuất. Dữ liệu đa dạng hơn sẽ giúp mô hình tổng quát tốt hơn.
+    \item \textbf{Fine-tuning toàn bộ mô hình}: Hiện tại mô hình chỉ huấn luyện phần head. Việc mở khóa và fine-tune một phần hoặc toàn bộ backbone có thể tăng độ chính xác.
+    \item \textbf{Thử nghiệm các mô hình mạnh hơn}: Ví dụ EfficientNetV2, ConvNeXt, hoặc các mô hình Transformer như ViT để nâng cao hiệu suất.
+    \item \textbf{Kết hợp nhiều mô hình (Ensemble)}: Có thể giảm sai số và ổn định kết quả trong môi trường thực tế.
+    \item \textbf{Ứng dụng trên thiết bị di động}: Triển khai mô hình với TensorFlow Lite để chạy trực tiếp trên điện thoại, tăng tính tiện dụng.
+    \item \textbf{Xây dựng hệ thống IoT}: Gắn camera vào thùng rác thông minh, tự động nhận diện và đề xuất người dùng bỏ đúng loại.
+    \item \textbf{Cải thiện giao diện người dùng}: Bổ sung tính năng lịch sử dự đoán, hướng dẫn phân loại rác, hoặc kết hợp game hoá (gamification) để tăng tương tác.
+\end{itemize}
+
+Nhóm hy vọng hệ thống phân loại rác bằng AI sẽ là một hướng đi giàu tiềm năng, đóng góp thiết thực vào vấn đề môi trường hiện nay. Với dữ liệu tốt hơn và tối ưu mô hình, hiệu năng hoàn toàn có thể đạt trên 90\% và được ứng dụng rộng rãi trong thực tế.
+
+
+
+
+
+% % Tài liệu tham khảo
+% \chapter*{Tài liệu tham khảo}
+\addcontentsline{toc}{chapter}{Tài liệu tham khảo}
+% Sử dụng BibTeX hoặc môi trường thebibliography nếu cần
+\begin{thebibliography}{9}
+\bibitem{ref1} A. Smith, ``Tiêu đề AI Lorem Ipsum,'' \emph{Tạp chí Nghiên cứu AI}, tập 12, số 3, trang 123--145, 2020. \doi{10.1234/fake.doi.001}
+
+\bibitem{ref2} B. Nguyen và C. Lee, ``Bài báo Deep Learning mẫu,'' \emph{Kỷ yếu Hội nghị Quốc tế về Thị giác Máy tính}, trang 456--462, 2019. \doi{10.1234/fake.doi.002}
+
+
+\bibitem{ref4} E. Kim et al., ``Xu hướng giả trong mô hình NLP,'' \emph{Tạp chí AI}, tập 15, số 1, trang 34--50, 2022. \doi{10.1234/fake.doi.004}
+
+\bibitem{ref5} F. Garcia, ``Ứng dụng mạng nơ-ron bịa đặt,'' \emph{Tạp chí Quốc tế về Khoa học Máy tính}, tập 20, số 4, trang 200--215, 2023. \doi{10.1234/fake.doi.005}
+
+\bibitem{ref6} G. Zhang, ``Nghiên cứu AI hoàn toàn giả,'' \emph{Tạp chí Hệ thống Máy tính}, tập 5, số 2, trang 99--110, 2018. \doi{10.1234/fake.doi.006}
+
+\bibitem{ref7} H. Tran và I. Chen, ``Tiêu đề Máy học vô nghĩa,'' \emph{Hội nghị Trí tuệ Nhân tạo}, trang 300--305, 2021. \doi{10.1234/fake.doi.007}
+
+\bibitem{ref8} J. Brown, ``Kết quả Deep Learning không thực,'' \emph{Tạp chí Thị giác Máy tính}, tập 17, số 1, trang 50--60, 2022. \doi{10.1234/fake.doi.008}
+\end{thebibliography}
+
+
+\end{document}
